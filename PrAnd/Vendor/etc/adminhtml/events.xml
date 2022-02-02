@@ -3,4 +3,8 @@
     <event name="prand_vendor_save_after">
         <observer name="prand_vendor_log_of_creating_a_new_vendor" instance="PrAnd\Vendor\Observer\LogOfCreatedANewVendorObserver" />
     </event>
+
+    <event name="prand_vendor_after_delete_vendor_by_repository">
+        <observer name="prand_vendor_log_after_delete_vendor_by_repository" instance="PrAnd\Vendor\Observer\LogAfterDeleteVendorByRepository"/>
+    </event>
 </config>

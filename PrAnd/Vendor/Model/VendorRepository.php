@@ -10,6 +10,7 @@ use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\Api\SearchResultsInterface;
 use Magento\Framework\Api\SearchResultsInterfaceFactory;
 use Magento\Framework\Model\AbstractExtensibleModel;
+use Magento\Framework\Event\ManagerInterface;
 
 use PrAnd\Vendor\Api\Data\VendorCollectionInterface;
 use PrAnd\Vendor\Api\Data\VendorCollectionInterfaceFactory;
@@ -41,9 +42,10 @@ class VendorRepository implements VendorRepositoryInterface
     /** @var FilterProcessor  */
     protected $filterProcessor;
 
+    /** @var ManagerInterface */
+    protected $eventManager;
+
     /**
-     * VendorRepository constructor.
-     *
      * @param VendorResource $vendorResource
      * @param VendorFactory $vendorFactory
      * @param CollectionProcessorInterface $collectionProcessor
@@ -51,6 +53,7 @@ class VendorRepository implements VendorRepositoryInterface
      * @param VendorCollectionInterfaceFactory $vendorCollectionInterfaceFactory
      * @param SearchResultsInterfaceFactory $searchResultFactory
      * @param FilterProcessor $filterProcessor
+     * @param ManagerInterface $eventManager
      */
     public function __construct(
         VendorResource $vendorResource,
@@ -59,7 +62,8 @@ class VendorRepository implements VendorRepositoryInterface
         SearchCriteriaBuilder $searchCriteriaBuilder,
         VendorCollectionInterfaceFactory $vendorCollectionInterfaceFactory,
         SearchResultsInterfaceFactory $searchResultFactory,
-        FilterProcessor $filterProcessor
+        FilterProcessor $filterProcessor,
+        ManagerInterface $eventManager
     ) {
         $this->vendorResource = $vendorResource;
         $this->vendorFactory = $vendorFactory;
@@ -68,6 +72,7 @@ class VendorRepository implements VendorRepositoryInterface
         $this->vendorCollectionInterfaceFactory = $vendorCollectionInterfaceFactory;
         $this->searchResultFactory = $searchResultFactory;
         $this->filterProcessor = $filterProcessor;
+        $this->eventManager = $eventManager;
     }
 
     /**
@@ -148,8 +153,16 @@ class VendorRepository implements VendorRepositoryInterface
      */
     public function delete(VendorEntity $vendor): bool
     {
+        $this->eventManager->dispatch('prand_vendor_before_delete_vendor_by_repository', [
+            'entity' => $vendor
+        ]);
+
         /** @var AbstractEntity|VendorResource $vendorResource */
         $this->vendorResource->delete($vendor);
+
+        $this->eventManager->dispatch('prand_vendor_after_delete_vendor_by_repository', [
+            'entity' => $vendor
+        ]);
 
         return $vendor->isDeleted();
     }
