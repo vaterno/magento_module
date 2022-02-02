@@ -15,6 +15,9 @@
     <preference for="PrAnd\Vendor\Api\Data\VendorCollectionInterface"
                 type="PrAnd\Vendor\Model\ResourceModel\Vendor\Collection"/>
 
+    <preference for="PrAnd\Vendor\Api\ApiVendorManagementInterface"
+                type="PrAnd\Vendor\Model\ApiVendorManagement"/>
+
     <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">
