@@ -1,0 +1,32 @@
+<?php
+use Magento\Framework\Api\SearchResultsInterface;
+
+/** \PrAnd\Vendor\Block\Widget\Vendors $block */
+/** @var SearchResultsInterface $vendorList */
+$vendorList = $block->getVendors();
+?>
+
+<?php if (!empty($vendorList->getTotalCount())) : ?>
+    <div class="block block-wishlist">
+        <?php if (!empty($block->getData('title'))) : ?>
+            <div class="block-title">
+                <strong role="heading" aria-level="2">
+                    <?= $block->getData('title'); ?>
+                </strong>
+            </div>
+        <?php endif; ?>
+
+        <div class="block-content">
+            <ul class="widget-vendor-list">
+                <?php /** @var PrAnd\Vendor\Model\Vendor $vendor */ ?>
+                <?php foreach($vendorList->getItems() as $vendor) : ?>
+                    <li class="widget-vendor-list__item">
+                        <div class="widget-vendor-list__name">
+                            <?= $vendor->getName(); ?>
+                        </div>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    </div>
+<?php endif; ?>
