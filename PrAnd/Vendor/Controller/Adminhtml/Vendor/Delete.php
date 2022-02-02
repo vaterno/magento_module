@@ -6,6 +6,7 @@ use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\Controller\Result\Redirect;
 
+use Magento\Framework\Controller\ResultInterface;
 use PrAnd\Vendor\Api\VendorRepositoryInterface;
 
 class Delete extends Action
@@ -19,7 +20,7 @@ class Delete extends Action
     protected $vendorRepository;
 
     /**
-     * {@inheritdoc}
+     * @var string[]
      */
     protected $_publicActions = [
         'delete'
@@ -38,9 +39,9 @@ class Delete extends Action
     }
 
     /**
-     * @return \Magento\Framework\App\ResponseInterface|Redirect|\Magento\Framework\Controller\ResultInterface
+     * @return ResultInterface
      */
-    public function execute()
+    public function execute(): ResultInterface
     {
         /** @var Redirect $redirect */
         $redirect = $this->resultRedirectFactory->create();

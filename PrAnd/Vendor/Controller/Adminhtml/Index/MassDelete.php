@@ -5,7 +5,7 @@ namespace PrAnd\Vendor\Controller\Adminhtml\Index;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\App\Action\HttpPostActionInterface;
-use Magento\Framework\App\ResponseInterface;
+use Magento\Framework\Controller\ResultInterface;
 use Magento\Framework\Exception\NotFoundException;
 
 use Magento\Framework\Model\AbstractExtensibleModel;
@@ -48,11 +48,11 @@ class MassDelete extends Action implements HttpPostActionInterface
     }
 
     /**
-     * @return ResponseInterface|\Magento\Framework\Controller\Result\Redirect|\Magento\Framework\Controller\ResultInterface
+     * @return ResultInterface
      * @throws NotFoundException
      * @throws \Magento\Framework\Exception\LocalizedException
      */
-    public function execute()
+    public function execute(): ResultInterface
     {
         /** @var Collection $vendorCollection */
         $vendorCollection = $this->collectionVendorFactory->create();

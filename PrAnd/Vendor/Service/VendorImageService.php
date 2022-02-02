@@ -37,9 +37,11 @@ class VendorImageService implements VendorImageServiceInterface
     }
 
     /**
-     * {@inheritDoc}
+     * @param string|null $imageName
+     * @return string|null
+     * @throws \Magento\Framework\Exception\FileSystemException
      */
-    public function getFullPathToImage($imageName)
+    public function getFullPathToImage(?string $imageName = null): ?string
     {
         if (!empty($imageName)) {
             $pathToImage = $this->directoryList->getPath('media') . '/' . self::BASE_TMP_PATH . '/' . $imageName;
@@ -52,9 +54,11 @@ class VendorImageService implements VendorImageServiceInterface
     }
 
     /**
-     * {@inheritDoc}
+     * @param string|null $imageName
+     * @return string
+     * @throws \Magento\Framework\Exception\FileSystemException
      */
-    public function getUrl($imageName)
+    public function getUrl(?string $imageName = null): string
     {
         $url = '';
 
@@ -70,9 +74,11 @@ class VendorImageService implements VendorImageServiceInterface
     }
 
     /**
-     * {@inheritDoc}
+     * @param string|null $imageName
+     * @return array
+     * @throws \Magento\Framework\Exception\FileSystemException
      */
-    public function getPreparedData($imageName)
+    public function getPreparedData(?string $imageName = null): array
     {
         $result = [];
 

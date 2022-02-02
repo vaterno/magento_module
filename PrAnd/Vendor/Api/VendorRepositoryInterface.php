@@ -2,48 +2,47 @@
 
 namespace PrAnd\Vendor\Api;
 
-use Magento\Eav\Model\Entity\AbstractEntity;
 use Magento\Framework\Api\SearchCriteria;
 use Magento\Framework\Api\SearchResultsInterface;
 use Magento\Framework\Model\AbstractExtensibleModel;
-use PrAnd\Vendor\Api\Data\VendorInterface as VendorDto;
+use PrAnd\Vendor\Api\Data\VendorInterface as VendorEntity;
 use PrAnd\Vendor\Model\ResourceModel\Vendor as VendorResource;
 
 interface VendorRepositoryInterface
 {
     /**
      * @param int $id
-     * @return VendorDto
+     * @return VendorEntity
      */
-    public function getById(int $id);
+    public function getById(int $id): VendorEntity;
 
     /**
      * @param SearchCriteria $searchCriteria
-     * @return SearchResultsInterface[]
+     * @return SearchResultsInterface
      */
-    public function getList(SearchCriteria $searchCriteria);
+    public function getList(SearchCriteria $searchCriteria): SearchResultsInterface;
 
     /**
      * @param array $ids
-     * @return VendorDto[]
+     * @return VendorEntity[]
      */
-    public function getByIds(array $ids);
+    public function getByIds(array $ids): array;
 
     /**
-     * @param VendorDto|AbstractExtensibleModel $vendor
-     * @return VendorResource|AbstractEntity
+     * @param VendorEntity $vendor
+     * @return VendorResource
      */
-    public function saveOrUpdate(VendorDto $vendor);
+    public function saveOrUpdate(VendorEntity $vendor): VendorResource;
 
     /**
-     * @param VendorDto|AbstractExtensibleModel $vendor
+     * @param VendorEntity|AbstractExtensibleModel $vendor
      * @return boolean
      */
-    public function delete(VendorDto $vendor);
+    public function delete(VendorEntity $vendor): bool;
 
     /**
      * @param int $id
-     * @return boolean
+     * @return bool
      */
-    public function deleteById(int $id);
+    public function deleteById(int $id): bool;
 }

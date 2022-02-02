@@ -17,19 +17,19 @@ interface VendorImageServiceInterface
 
     /**
      * @param string|null $imageName
-     * @return string|void
+     * @return string|null
      */
-    public function getFullPathToImage(string $imageName);
+    public function getFullPathToImage(?string $imageName = null): ?string;
 
     /**
-     * @param string|void $imageName
+     * @param string|null $imageName
      * @return string
      */
-    public function getUrl($imageName);
+    public function getUrl(?string $imageName = null): ?string;
 
     /**
      * @param string|null $imageName
      * @return array
      */
-    public function getPreparedData($imageName);
+    public function getPreparedData(?string $imageName = null): array;
 }

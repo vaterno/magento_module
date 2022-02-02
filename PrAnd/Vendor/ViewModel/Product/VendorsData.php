@@ -30,7 +30,7 @@ class VendorsData implements ArgumentInterface
      * @param Product $product
      * @return VendorInterface[]
      */
-    public function getData(Product $product)
+    public function getData(Product $product): array
     {
         $result = [];
         /** @var AttributeValue|null $vendorAttrs */
@@ -51,7 +51,7 @@ class VendorsData implements ArgumentInterface
      * @param VendorInterface[] $vendorModels
      * @return VendorInterface[]
      */
-    protected function modifyImage(array $vendorModels)
+    protected function modifyImage(array $vendorModels): array
     {
         if (!empty($vendorModels)) {
             $vendorModels = array_reduce($vendorModels, function ($carry, $item) {

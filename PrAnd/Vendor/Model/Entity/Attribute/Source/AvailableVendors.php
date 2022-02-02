@@ -23,7 +23,11 @@ class AvailableVendors extends AbstractSource
         $this->vendorCollectionFactory = $vendorCollectionFactory;
     }
 
-    public function getAllOptions()
+    /**
+     * @return array
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
+    public function getAllOptions(): array
     {
         $result = [];
 

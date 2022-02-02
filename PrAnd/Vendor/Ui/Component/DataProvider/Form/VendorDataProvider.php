@@ -58,7 +58,7 @@ class VendorDataProvider extends AbstractDataProvider
      * @return array
      * @throws \Magento\Framework\Exception\LocalizedException
      */
-    public function getData()
+    public function getData(): array
     {
         if (isset($this->loadedData)) {
             return $this->loadedData;

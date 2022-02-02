@@ -60,7 +60,7 @@ class Thumbnail extends Column
      * @param array $dataSource
      * @return array
      */
-    public function prepareDataSource(array $dataSource)
+    public function prepareDataSource(array $dataSource): array
     {
         if (!empty($dataSource['data']['items'])) {
             $fieldName = $this->getData('name');

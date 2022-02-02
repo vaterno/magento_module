@@ -13,7 +13,7 @@ use Magento\Framework\Model\AbstractExtensibleModel;
 
 use PrAnd\Vendor\Api\Data\VendorCollectionInterface;
 use PrAnd\Vendor\Api\Data\VendorCollectionInterfaceFactory;
-use PrAnd\Vendor\Api\Data\VendorInterface as VendorDto;
+use PrAnd\Vendor\Api\Data\VendorInterface as VendorEntity;
 use PrAnd\Vendor\Api\VendorRepositoryInterface;
 use PrAnd\Vendor\Model\ResourceModel\Vendor as VendorResource;
 use PrAnd\Vendor\Model\ResourceModel\Vendor\Collection as VendorCollection;
@@ -72,11 +72,11 @@ class VendorRepository implements VendorRepositoryInterface
 
     /**
      * @param int $id
-     * @return VendorDto
+     * @return VendorEntity
      */
-    public function getById(int $id)
+    public function getById(int $id): VendorEntity
     {
-        /** @var VendorDto|AbstractExtensibleModel $vendorDto */
+        /** @var VendorEntity|AbstractExtensibleModel $vendorDto */
         $vendorDto = $this->vendorFactory->create();
         $this->vendorResource->load($vendorDto, $id);
 
@@ -84,9 +84,11 @@ class VendorRepository implements VendorRepositoryInterface
     }
 
     /**
-     * {@inheritDoc}
+     * @param SearchCriteria $searchCriteria
+     * @return SearchResultsInterface
+     * @throws \Magento\Framework\Exception\LocalizedException
      */
-    public function getList(SearchCriteria $searchCriteria)
+    public function getList(SearchCriteria $searchCriteria): SearchResultsInterface
     {
         /** @var VendorCollectionInterface|VendorCollection $vendorCollection */
         $vendorCollection = $this->vendorCollectionInterfaceFactory->create();
@@ -103,9 +105,11 @@ class VendorRepository implements VendorRepositoryInterface
     }
 
     /**
-     * {@inheritDoc}
+     * @param array $ids
+     * @return array|VendorEntity[]
+     * @throws \Magento\Framework\Exception\LocalizedException
      */
-    public function getByIds(array $ids)
+    public function getByIds(array $ids): array
     {
         $result = [];
 
@@ -120,11 +124,11 @@ class VendorRepository implements VendorRepositoryInterface
     }
 
     /**
-     * @param Vendor $vendor
-     * @return AbstractEntity|VendorResource
+     * @param VendorEntity $vendor
+     * @return VendorResource
      * @throws \Magento\Framework\Exception\AlreadyExistsException
      */
-    public function saveOrUpdate(VendorDto $vendor)
+    public function saveOrUpdate(VendorEntity $vendor): VendorResource
     {
         // update
         if (!empty($vendor->getId())) {
@@ -138,14 +142,15 @@ class VendorRepository implements VendorRepositoryInterface
     }
 
     /**
-     * @param Vendor $vendor
+     * @param VendorEntity $vendor
      * @return bool
      * @throws \Exception
      */
-    public function delete(VendorDto $vendor)
+    public function delete(VendorEntity $vendor): bool
     {
         /** @var AbstractEntity|VendorResource $vendorResource */
         $this->vendorResource->delete($vendor);
+
         return $vendor->isDeleted();
     }
 
@@ -154,9 +159,9 @@ class VendorRepository implements VendorRepositoryInterface
      * @return bool
      * @throws \Exception
      */
-    public function deleteById(int $id)
+    public function deleteById(int $id): bool
     {
-        /** @var VendorDto|AbstractExtensibleModel $vendorDto */
+        /** @var VendorEntity|AbstractExtensibleModel $vendorDto */
         $vendorDto = $this->vendorFactory->create();
         $this->vendorResource->load($vendorDto, $id);
 

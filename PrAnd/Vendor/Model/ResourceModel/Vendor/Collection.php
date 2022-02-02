@@ -10,7 +10,7 @@ use PrAnd\Vendor\Model\ResourceModel\Vendor as ResourceVendor;
 class Collection extends AbstractCollection
 {
     /**
-     * {@inheritdoc}
+     * @var string
      */
     protected $_idFieldName = Vendor::ID;
 

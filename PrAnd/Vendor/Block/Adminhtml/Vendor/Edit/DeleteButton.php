@@ -28,7 +28,12 @@ class DeleteButton implements ButtonProviderInterface
         $this->urlBuilder = $urlBuilder;
     }
 
-    public function getButtonData()
+    /**
+     * Retrieve button-specified settings
+     *
+     * @return array
+     */
+    public function getButtonData(): array
     {
         $data = [];
         $id = $this->request->getParam(static::REQUEST_FIELD_NAME);
@@ -49,9 +54,9 @@ class DeleteButton implements ButtonProviderInterface
 
     /**
      * @param $carId
-     * @return mixed
+     * @return string
      */
-    public function getDeleteUrl(int $id)
+    public function getDeleteUrl(int $id): string
     {
         return $this->urlBuilder->getUrl('*/*/delete', [
             static::REQUEST_FIELD_NAME => $id

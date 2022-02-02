@@ -4,9 +4,9 @@ namespace PrAnd\Vendor\Controller\Adminhtml\Vendor;
 
 use Magento\Backend\App\Action;
 use Magento\Framework\App\Action\HttpGetActionInterface;
-use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Backend\Model\View\Result\Page;
+use Magento\Framework\Controller\ResultInterface;
 
 use PrAnd\Vendor\Controller\Adminhtml\Index\Index;
 
@@ -15,16 +15,16 @@ class Edit extends Action implements HttpGetActionInterface
     const ADMIN_RESOURCE = 'PrAnd_Vendor::vendors_edit';
 
     /**
-     * {@inheritdoc}
+     * @var string[]
      */
     protected $_publicActions = [
         'edit'
     ];
 
     /**
-     * @return ResponseInterface|\Magento\Framework\Controller\ResultInterface|\Magento\Framework\View\Result\Layout
+     * @return ResultInterface
      */
-    public function execute()
+    public function execute(): ResultInterface
     {
         /** @var Page $page */
         $page = $this->resultFactory->create(ResultFactory::TYPE_PAGE);

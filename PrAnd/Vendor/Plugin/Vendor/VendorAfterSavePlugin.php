@@ -26,11 +26,16 @@ class VendorAfterSavePlugin
         $this->vendorImage = $image;
     }
 
-    public function beforeAfterSave(VendorInterface $vendor)
+    /**
+     * @param VendorInterface $vendor
+     * @return void
+     * @throws \Magento\Framework\Exception\FileSystemException
+     */
+    public function beforeAfterSave(VendorInterface $vendor): void
     {
         /** @var AbstractExtensibleModel|VendorInterface $vendor */
         $prevData = $vendor->getOrigData();
-        $prevImage = $prevData['image'];
+        $prevImage = $prevData['image'] ?? [];
         $currentImage = $vendor->getImage();
 
         if (!empty($prevImage)) {

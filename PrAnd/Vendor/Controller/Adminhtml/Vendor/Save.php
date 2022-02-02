@@ -6,8 +6,10 @@ use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\App\Action\HttpPostActionInterface;
 use Magento\Framework\App\Request\DataPersistorInterface;
-use Magento\Framework\App\ResponseInterface;
+use Magento\Framework\Controller\ResultInterface;
 use Magento\Framework\Model\AbstractExtensibleModel;
+use PrAnd\Vendor\Controller\Adminhtml\Vendor\Edit;
+use PrAnd\Vendor\Controller\Adminhtml\Vendor\AddNew;
 
 use PrAnd\Vendor\Api\Data\VendorInterface;
 use PrAnd\Vendor\Api\Data\VendorInterfaceFactory;
@@ -44,9 +46,9 @@ class Save extends Action implements HttpPostActionInterface
     }
 
     /**
-     * @return ResponseInterface|\Magento\Framework\Controller\Result\Redirect|\Magento\Framework\Controller\ResultInterface
+     * @return ResultInterface
      */
-    public function execute()
+    public function execute(): ResultInterface
     {
         $redirect = $this->resultRedirectFactory->create();
         $post = $this->getRequest()->getParam('vendor');
@@ -63,7 +65,7 @@ class Save extends Action implements HttpPostActionInterface
             $this->messageManager->addSuccessMessage(__('Data saved successfully.'));
             $this->dataPersistor->clear('vendor');
         } catch (\Exception $e) {
-            $this->messageManager->addErrorMessage(__('Failed to update data.'));
+            $this->messageManager->addErrorMessage($e->getMessage());
 
             if (!$isUpdate) {
                 return $redirect->setPath('*/*/addNew');
@@ -78,10 +80,10 @@ class Save extends Action implements HttpPostActionInterface
     /**
      * @return bool
      */
-    public function _isAllowed()
+    public function _isAllowed(): bool
     {
-        $isAllowed = ($this->_authorization->isAllowed(\PrAnd\Vendor\Controller\Adminhtml\Vendor\Edit::ADMIN_RESOURCE) ||
-                    $this->_authorization->isAllowed(\PrAnd\Vendor\Controller\Adminhtml\Vendor\AddNew::ADMIN_RESOURCE));
+        $isAllowed = ($this->_authorization->isAllowed(Edit::ADMIN_RESOURCE) ||
+                    $this->_authorization->isAllowed(AddNew::ADMIN_RESOURCE));
 
         return $isAllowed;
     }

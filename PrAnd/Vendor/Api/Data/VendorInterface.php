@@ -27,48 +27,48 @@ interface VendorInterface
     ];
 
     /**
-     * @return int|null
+     * @return mixed
      */
     public function getId();
 
     /**
-     * @param int $id
+     * @param mixed $value
      * @return $this
      */
-    public function setId($id);
+    public function setId(mixed $value);
 
     /**
      * @return string|null
      */
-    public function getName();
+    public function getName(): ?string;
 
     /**
      * @param string $name
      * @return $this
      */
-    public function setName($name);
+    public function setName(string $name): self;
 
     /**
      * @return string|null
      */
-    public function getDescription();
+    public function getDescription(): ?string;
 
     /**
      * @param string $description
      * @return $this
      */
-    public function setDescription($description);
+    public function setDescription(string $description): self;
 
     /**
      * @return string|null
      */
-    public function getImage();
+    public function getImage(): ?string;
 
     /**
      * @param string $image
      * @return $this
      */
-    public function setImage($image);
+    public function setImage(string $image): self;
 
     /**
      * @return string|null
@@ -79,16 +79,16 @@ interface VendorInterface
      * @param string $createdAt
      * @return $this
      */
-    public function setCreatedAt($createdAt);
+    public function setCreatedAt(string $createdAt): self;
 
     /**
      * @return string|null
      */
-    public function getUpdatedAt();
+    public function getUpdatedAt(): ?string;
 
     /**
      * @param string $updatedAt
      * @return $this
      */
-    public function setUpdatedAt($updatedAt);
+    public function setUpdatedAt(string $updatedAt): self;
 }

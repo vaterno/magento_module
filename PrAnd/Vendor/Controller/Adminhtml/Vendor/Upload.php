@@ -6,9 +6,9 @@ use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Catalog\Model\ImageUploader;
 use Magento\Framework\App\Action\HttpPostActionInterface;
-use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\Controller\ResultFactory;
 
+use Magento\Framework\Controller\ResultInterface;
 use PrAnd\Vendor\Api\VendorImageServiceInterface;
 
 class Upload extends Action implements HttpPostActionInterface
@@ -32,9 +32,9 @@ class Upload extends Action implements HttpPostActionInterface
     }
 
     /**
-     * @return ResponseInterface|\Magento\Framework\Controller\ResultInterface|void
+     * @return ResultInterface
      */
-    public function execute()
+    public function execute(): ResultInterface
     {
         $imageId = $this->_request->getParam('param_name', 'image');
         $this->uploader->setAllowedExtensions(array_keys(VendorImageServiceInterface::ALLOWED_TYPES));
@@ -49,7 +49,10 @@ class Upload extends Action implements HttpPostActionInterface
         return $this->resultFactory->create(ResultFactory::TYPE_JSON)->setData($result);
     }
 
-    protected function _isAllowed()
+    /**
+     * @return bool
+     */
+    protected function _isAllowed(): bool
     {
         $isAllowed = ($this->_authorization->isAllowed(Edit::ADMIN_RESOURCE) || $this->_authorization->isAllowed(AddNew::ADMIN_RESOURCE));
         return $isAllowed;

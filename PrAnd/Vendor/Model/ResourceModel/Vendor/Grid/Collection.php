@@ -17,7 +17,7 @@ class Collection extends AbstractCollection implements SearchResultInterface
     protected $searchCriteria;
 
     /**
-     * {@inheritdoc}
+     * @var string
      */
     protected $_idFieldName = Vendor::ID;
 
@@ -34,16 +34,16 @@ class Collection extends AbstractCollection implements SearchResultInterface
     /**
      * @return SearchCriteriaInterface
      */
-    public function getSearchCriteria()
+    public function getSearchCriteria(): SearchCriteriaInterface
     {
         return $this->searchCriteria;
     }
 
     /**
      * @param SearchCriteriaInterface $searchCriteria
-     * @return $this|Collection
+     * @return $this
      */
-    public function setSearchCriteria(SearchCriteriaInterface $searchCriteria)
+    public function setSearchCriteria(SearchCriteriaInterface $searchCriteria): self
     {
         $this->searchCriteria = $searchCriteria;
         return $this;
@@ -52,26 +52,26 @@ class Collection extends AbstractCollection implements SearchResultInterface
     /**
      * @return int
      */
-    public function getTotalCount()
+    public function getTotalCount(): int
     {
         return $this->getSize();
     }
 
     /**
      * @param int $totalCount
-     * @return $this|Collection
+     * @return $this
      */
-    public function setTotalCount($totalCount)
+    public function setTotalCount($totalCount): self
     {
         return $this;
     }
 
     /**
      * @param array|null $items
-     * @return $this|Collection
+     * @return $this
      * @throws \Magento\Framework\Exception\LocalizedException
      */
-    public function setItems(?array $items = null)
+    public function setItems(?array $items = null): self
     {
         if (!empty($items)) {
             /** @var VendorInterface $item */
@@ -86,16 +86,16 @@ class Collection extends AbstractCollection implements SearchResultInterface
     /**
      * @return AggregationInterface
      */
-    public function getAggregations()
+    public function getAggregations(): AggregationInterface
     {
         return $this->aggregations;
     }
 
     /**
      * @param AggregationInterface $aggregations
-     * @return $this|Collection
+     * @return $this
      */
-    public function setAggregations($aggregations)
+    public function setAggregations($aggregations): self
     {
         $this->aggregations = $aggregations;
         return $this;
