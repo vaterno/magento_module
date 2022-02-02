@@ -32,6 +32,12 @@ class Save extends Action implements HttpPostActionInterface
      */
     protected $dataPersistor;
 
+    /**
+     * @param Context $context
+     * @param VendorRepositoryInterface $vendorRepository
+     * @param VendorInterfaceFactory $vendorDtoFactory
+     * @param DataPersistorInterface $dataPersistor
+     */
     public function __construct(
         Context $context,
         VendorRepositoryInterface $vendorRepository,

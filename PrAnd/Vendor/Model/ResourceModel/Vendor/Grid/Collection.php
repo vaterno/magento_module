@@ -14,6 +14,8 @@ class Collection extends AbstractCollection implements SearchResultInterface
 {
     /** @var AggregationInterface */
     protected $aggregations;
+
+    /** @var SearchCriteriaInterface */
     protected $searchCriteria;
 
     /**
@@ -21,6 +23,10 @@ class Collection extends AbstractCollection implements SearchResultInterface
      */
     protected $_idFieldName = Vendor::ID;
 
+    /**
+     * @return void
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
     public function _construct()
     {
         $this->_init(

@@ -18,6 +18,10 @@ class VendorAfterSavePlugin
     /** @var VendorImageServiceInterface  */
     protected $vendorImage;
 
+    /**
+     * @param File $driverFile
+     * @param VendorImageServiceInterface $image
+     */
     public function __construct(
         File $driverFile,
         VendorImageServiceInterface $image

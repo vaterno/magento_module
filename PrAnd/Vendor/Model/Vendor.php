@@ -20,6 +20,9 @@ class Vendor extends AbstractExtensibleModel implements IdentityInterface, Vendo
     /** @var string  */
     protected $_eventPrefix = 'prand_vendor';
 
+    /**
+     * @return void
+     */
     public function _construct()
     {
         $this->_init(

@@ -14,6 +14,9 @@ class Collection extends AbstractCollection
      */
     protected $_idFieldName = Vendor::ID;
 
+    /**
+     * @return void
+     */
     public function _construct()
     {
         $this->_init(

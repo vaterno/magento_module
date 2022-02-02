@@ -18,6 +18,10 @@ class VendorsData implements ArgumentInterface
     /** @var VendorImageServiceInterface  */
     protected $vendorImageService;
 
+    /**
+     * @param VendorRepositoryInterface $vendorRepository
+     * @param VendorImageServiceInterface $vendorImageService
+     */
     public function __construct(
         VendorRepositoryInterface $vendorRepository,
         VendorImageServiceInterface $vendorImageService

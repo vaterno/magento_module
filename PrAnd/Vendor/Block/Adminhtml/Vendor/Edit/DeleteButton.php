@@ -20,6 +20,10 @@ class DeleteButton implements ButtonProviderInterface
      */
     protected $urlBuilder;
 
+    /**
+     * @param RequestInterface $request
+     * @param UrlInterface $urlBuilder
+     */
     public function __construct(
         RequestInterface $request,
         UrlInterface $urlBuilder
