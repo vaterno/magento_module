@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="product.info.media">
+            <block class="PrAnd\Training\Block\Product\Media\AdditionalData" name="prand.training.product.media.additional_data" template="PrAnd_Training::product/media/additional_data.phtml"/>
+        </referenceContainer>
+
+        <referenceBlock name="text.shows.on.all.pages">
+            <arguments>
+                <argument name="background_color" xsi:type="string">orange</argument>
+            </arguments>
+        </referenceBlock>
+
+        <referenceBlock class="Magento\Catalog\Block\Product\View\Description" name="product.info.sku" template="PrAnd_Training::product/info/info_data.phtml"/>
+        <referenceBlock class="Magento\Catalog\Block\Product\View\Description" name="product.info.overview" template="PrAnd_Training::product/info/info_data.phtml"/>
+        <referenceBlock class="Magento\Catalog\Block\Product\View\Description" name="product.info.description" template="PrAnd_Training::product/info/info_data.phtml"/>
+    </body>
+</page>

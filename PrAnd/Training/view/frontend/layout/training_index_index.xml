@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      layout="1column"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+
+    <head>
+        <title>Custom title for layout xml</title>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="PrAnd\Training\Block\MyBlock" template="PrAnd_Training::index.phtml"/>
+        </referenceContainer>
+
+        <referenceBlock name="text.shows.on.all.pages" remove="true"/>
+    </body>
+</page>

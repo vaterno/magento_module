@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content.top">
+            <block class="Magento\Framework\View\Element\Template" name="text.shows.on.all.pages" template="PrAnd_Training::content/top/show_on_all_pages.phtml">
+                <arguments>
+                    <argument name="background_color" xsi:type="string">lightskyblue</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+        
+        <referenceBlock name="header.links">
+            <block class="Magento\Framework\View\Element\Html\Link" name="prand.training.index.link">
+                <arguments>
+                    <argument name="path" xsi:type="string">training/index/index</argument>
+                    <argument name="label" xsi:type="string">name</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

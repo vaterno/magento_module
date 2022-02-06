@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <prand_training_training_settings>
+            <general>
+                <text_input>Default text</text_input>
+                <yes_or_no>0</yes_or_no>
+                <is_enabled_price_premium>1</is_enabled_price_premium>
+            </general>
+        </prand_training_training_settings>
+    </default>
+</config>
