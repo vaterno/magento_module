@@ -9,7 +9,7 @@
                 <shipping_cost>10</shipping_cost>
                 <sallowspecific>0</sallowspecific>
                 <sort_order>15</sort_order>
-                <model>PrAnd\Vendor\Model\Carrier</model>
+                <model>PrAnd\Vendor\Model\VendorShipping</model>
             </vendorshipping>
         </carriers>
     </default>
